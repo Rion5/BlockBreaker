@@ -659,6 +659,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 20104286631507928, guid: 3399e8aefc5f5994ba8feee42a37ed17,
+        type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: 0.17371324
+      objectReference: {fileID: 0}
+    - target: {fileID: 20104286631507928, guid: 3399e8aefc5f5994ba8feee42a37ed17,
+        type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: 0.30003807
+      objectReference: {fileID: 0}
+    - target: {fileID: 20104286631507928, guid: 3399e8aefc5f5994ba8feee42a37ed17,
+        type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: 0.375
+      objectReference: {fileID: 0}
+    - target: {fileID: 20104286631507928, guid: 3399e8aefc5f5994ba8feee42a37ed17,
+        type: 2}
+      propertyPath: m_BackGroundColor.a
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3399e8aefc5f5994ba8feee42a37ed17, type: 2}
   m_IsPrefabParent: 0
@@ -901,6 +921,12 @@ Prefab:
       propertyPath: levelManager
       value: 
       objectReference: {fileID: 803517483}
+    - target: {fileID: 212893228241059562, guid: 2ba627ce71de3544290461c08a03455d,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 40a384357e8efc542bba181c875dae7e,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ba627ce71de3544290461c08a03455d, type: 2}
   m_IsPrefabParent: 0
