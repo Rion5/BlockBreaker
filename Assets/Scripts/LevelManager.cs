@@ -14,4 +14,9 @@ public class LevelManager : MonoBehaviour {
     {
         Debug.Log("Quit Game Button Pressed");
     }
+
+    public void LoadNextLevel()
+    {
+        Application.LoadLevel(Application.loadedLevel + 1);
+    }
 }
