@@ -6,14 +6,12 @@ public class Brick : MonoBehaviour {
 
     private LevelManager levelManager;
 
-    //How many times the brick can be hit (I.E its health)
-    public int maxHits;
     public Sprite[] hitSprites;
 
     private int timesHit;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         levelManager = GameObject.FindObjectOfType<LevelManager>();
         timesHit = 0;
 
@@ -26,9 +24,19 @@ public class Brick : MonoBehaviour {
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        bool isBreakable = (this.tag == "Breakable");
+        if (isBreakable)
+        {
+            HandleHits();
+        }
+    }
+
+    void HandleHits()
+    {
         //Increment the hit counter. If the counter is > it's maxHits (or its hp), then destroy the gameObject
         //Otherwise load the damaged sprite
         timesHit++;
+        int maxHits = hitSprites.Length + 1; //How many times the brick can be hit (I.E its health)
         if (timesHit >= maxHits)
         {
             Destroy(gameObject);
@@ -42,7 +50,10 @@ public class Brick : MonoBehaviour {
     void LoadSprites()
     {
         int spriteIndex = timesHit - 1;
-        this.GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
+        if (hitSprites[spriteIndex])
+        {
+            this.GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
+        }
     }
 
     //TODO Remove this method once we can actually win!
