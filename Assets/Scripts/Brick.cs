@@ -8,6 +8,7 @@ public class Brick : MonoBehaviour {
 
     //How many times the brick can be hit (I.E its health)
     public int maxHits;
+    public Sprite[] hitSprites;
 
     private int timesHit;
 
@@ -25,12 +26,23 @@ public class Brick : MonoBehaviour {
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        //Increment the hit counter. If the counter is > it's maxHits (or its hp), then destroy the gameObject
+        //Otherwise load the damaged sprite
         timesHit++;
         if (timesHit >= maxHits)
         {
             Destroy(gameObject);
         }
-        //SimulateWin(); For Testing Purposes. Hitting a Brick sends you to the next level
+        else
+        {
+            LoadSprites();
+        }
+    }
+
+    void LoadSprites()
+    {
+        int spriteIndex = timesHit - 1;
+        this.GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
     }
 
     //TODO Remove this method once we can actually win!
