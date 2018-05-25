@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Ball : MonoBehaviour {
     private Paddle paddle;
@@ -33,4 +34,11 @@ public class Ball : MonoBehaviour {
             }
         }
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (hasStarted) { 
+            GetComponent<AudioSource>().Play();
+        }
+    }
 }

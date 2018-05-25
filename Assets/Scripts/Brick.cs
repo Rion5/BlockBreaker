@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour {
 
+    public AudioClip crack;
+    public Sprite[] hitSprites;
+    public static int breakableCount = 0;
+
     private LevelManager levelManager;
     private int timesHit;
     private bool isBreakable;
 
-    public Sprite[] hitSprites;
-    public static int breakableCount = 0;
 
     // Use this for initialization
     void Start () {
@@ -17,10 +19,10 @@ public class Brick : MonoBehaviour {
         //Keep track of breakable bricks
         if (isBreakable)
         {
-            breakableCount = breakableCount++;
+            breakableCount++;
         }
-        levelManager = GameObject.FindObjectOfType<LevelManager>();
         timesHit = 0;
+        levelManager = GameObject.FindObjectOfType<LevelManager>();
 
 	}
 	
@@ -31,6 +33,7 @@ public class Brick : MonoBehaviour {
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        AudioSource.PlayClipAtPoint(crack, transform.position);
         if (isBreakable)
         {
             HandleHits();
