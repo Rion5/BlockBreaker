@@ -37,12 +37,23 @@ public class Ball : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //TODO: Test Gameplay and decide if I should use random range, or use the delta of the ball, from the middle of the paddle.
         Vector2 randomTweak = new Vector2(Random.Range(0f, 0.2f), Random.Range(0f, 0.2f));
 
         if (hasStarted) { 
-            GetComponent<AudioSource>().Play();
-            rigidbody2D.velocity += randomTweak;
-            print(randomTweak);
+            if(collision.gameObject.name == "Paddle")
+            {
+                //Find the Delta
+                //Ball's X position - (Paddle's X Pos + Paddle Width/2);
+                var delta = this.transform.position - (paddle.transform.position + (paddle.transform.position / 2));
+                rigidbody2D.velocity += (Vector2)delta;
+                GetComponent<AudioSource>().Play();
+            }
+            else
+            {
+                rigidbody2D.velocity += randomTweak;
+                print(randomTweak);
+            }
         }
     }
 }
